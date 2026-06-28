@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة حب ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #000000, #8b0000, #ff1e56);
+            font-family: 'Cairo', sans-serif;
+        }
+        .stars { position: absolute; width: 100%; height: 100%; }
+        .star {
+            position: absolute; width: 2px; height: 2px;
+            background: rgb(209, 198, 198); border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        @keyframes twinkle { from { opacity: .2; } to { opacity: 1; } }
+        
+        .moon {
+            position: absolute; top: 40px; right: 60px;
+            width: 80px; height: 80px;
+            background: #dfc6c6; border-radius: 50%;
+            box-shadow: 0 0 50px rgb(255, 255, 255);
+        }
+        .container {
+            position: relative; width: 340px; height: 240px;
+            perspective: 1000px; cursor: pointer;
+        }
+        .envelope {
+            position: absolute; width: 100%; height: 100%;
+            background: #ff69b4; border-radius: 12px;
+            overflow: hidden; 
+            box-shadow: 0 10px 40px rgba(235, 34, 34, 0.4);
+        }
+        .flap {
+            position: absolute; width: 100%; height: 100%;
+            background: #ff4fa3;
+            clip-path: polygon(0 0, 50% 58%, 100% 0);
+            transform-origin: top; transition: 1.2s; z-index: 5;
+        }
+        .heart {
+            position: absolute; top: 92px; left: 50%;
+            transform: translateX(-50%);
+            font-size: 45px; z-index: 10; transition: 0.8s;
+        }
+ٌٌٌٌٌٌٌ        .letter {
+            position: absolute;
+            width: 85%; 
+            height: 160px; 
+            background: rgb(202, 87, 183);
+            left: 7.5%; 
+            bottom: 0; 
+            border-radius: 10px;
+            z-index: 1; 
+            transition: 1.5s ease-in-out;
+            transform-origin: bottom;
+            transform: scaleY(0.2); 
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(206, 178, 178, 0.2);
+        }
+        .paper-content {
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            opacity: 0; transition: 1s;
+            color: #db0707;
+        }
+        .love { font-size: 52px; font-weight: bold; text-shadow: 0 0 12px pink; }
+        .name { margin-top: 20px; font-size: 30px; }
+
+        
+        .open .flap { transform: rotateX(180deg); }
+        .open .heart { opacity: 0; transform: translateX(-50%) scale(0); }
+        
+        
+        .open .letter {
+            bottom: 60px;
+            transform: scaleY(1.1); 
+            z-index: 4; 
+        }
+        .open .paper-content { opacity: 1; transition-delay: 1s; }
+        
+        .hint {
+            position: absolute; bottom: 25px;
+            color: rgb(228, 228, 228); font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="stars"></div>
+    <div class="moon"></div>
+
+    <div class="container" id="box">
+        <div class="envelope">
+            <div class="flap"></div>
+        </div>
+        <div class="heart">❤️</div>
+        <div class="letter">
+            <div class="paper-content">
+                <div class="love">Love Code</div>
+                <div class="name">Arwa Elbestwy</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hint">اضغط على القلب ❤️</div>
+
+    <audio id="music">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+<script>
+    const box = document.getElementById("box");
+    const music = document.getElementById("music");
+
+    box.addEventListener("click", () => {
+        box.classList.add("open");
+        music.play();
+    });
+
+    for(let i = 0; i < 150; i++){
+        let star = document.createElement("div");
+        star.classList.add("star");
+        star.style.top = Math.random() * 100 + "%";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDuration = (Math.random() * 3 + 1) + "s";
+        document.getElementById("stars").appendChild(star);
+    }
+</script>
+</body>
+</html>   
